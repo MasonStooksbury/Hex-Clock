@@ -1,79 +1,95 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hex Clock Tabs</title>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hex Clock Tabs</title>
+	<link rel="stylesheet" href="styles.css">
+	<script>
+		function openTab(evt, tabName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(tabName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+	</script>
 </head>
+
 <body>
 
-<div class="login-container">
-    <div class="tab">
-        <button class="tablinks" onclick="openTab(event, 'colors')">Change Colors</button>
-        <button class="tablinks" onclick="openTab(event, 'time')">Set Time</button>
-        <button class="tablinks" onclick="openTab(event, 'login')">Configure Login</button>
-    </div>
-    <br>
+	<div class="login-container">
+		<div class="tab">
+			<button class="tablinks" onclick="openTab(event, 'colors')">Change Colors</button>
+			<button class="tablinks" onclick="openTab(event, 'time')">Set Time</button>
+			<button class="tablinks" onclick="openTab(event, 'login')">Configure Login</button>
+		</div>
+		<br>
 
-    <div id="colors" class="tabcontent">
-        <h3>Tab 1</h3>
-        <p>Content for Tab 1.</p>
-    </div>
+		<div id="colors" class="tabcontent">
+			<div class="row">
+				<div class="hexagon">
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+				</div>
+				<div class="hexagon" style="margin-left: 1rem;">
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+					<div class="triangle"></div>
+				</div>
+			</div>
+		</div>
 
-    <div id="time" class="tabcontent">
-        <h2>Setup Time</h2>
-        <form action="/configure" method="POST" autocomplete="off" autocapitalize="none">
-            <div class="form-group">
-                <label for="time">Enter time (HH:MM, 24-hour format):</label>
-                <br>
-                <br>
-                <input type="text" id="time" name="time" 
-                       pattern="(?:[01]\d|2[0-3]):[0-5]\d" 
-                       title="Time in 24-hour format (HH:MM)" 
-                       placeholder="04:16"
-                       required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Submit">
-            </div>
-        </form>
-    </div>
+		<div id="time" class="tabcontent">
+			<h2>Setup Time</h2>
+			<form action="/configure" method="POST" autocomplete="off" autocapitalize="none">
+				<div class="form-group">
+					<label for="time">Enter time (HH:MM, 24-hour format):</label>
+					<br>
+					<br>
+					<input type="text" id="time" name="time" pattern="(?:[01]\d|2[0-3]):[0-5]\d"
+						title="Time in 24-hour format (HH:MM)" placeholder="04:16" required>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Submit">
+				</div>
+			</form>
+		</div>
 
-    <div id="login" class="tabcontent">
-        <h2>Login Credentials</h2>
-        <form action="/configure" method="POST" autocomplete="off" autocapitalize="none">
-            <div class="form-group">
-                <input type="text" placeholder="Username" name="username" required>
-            </div>
-            <div class="form-group">
-                <input type="password" placeholder="Password" name="password" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Change">
-            </div>
-        </form>
-    </div>
-</div>
+		<div id="login" class="tabcontent">
+			<h2>Login Credentials</h2>
+			<form action="/configure" method="POST" autocomplete="off" autocapitalize="none">
+				<div class="form-group">
+					<input type="text" placeholder="Username" name="username" required>
+				</div>
+				<div class="form-group">
+					<input type="password" placeholder="Password" name="password" required>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Change">
+				</div>
+			</form>
+		</div>
+	</div>
 
-<script>
-    // Open the first tab by default
-    document.getElementsByClassName("tablinks")[0].click();
-</script>
+	<script>
+		// Open the first tab by default
+		document.getElementsByClassName("tablinks")[0].click();
+	</script>
 
 </body>
+
 </html>

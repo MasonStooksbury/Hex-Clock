@@ -24,14 +24,9 @@ def setupMode():
         return renderPage(f"{PAGES_PATH}/login.html")
 
     def configure(request):
-        # print("Saving wifi credentials...")
-
         # with open(WIFI_FILE, "w") as f:
         #     json.dump(request.form, f)
         #     f.close()
-        print('username', request.form["username"])
-        print('password', request.form["password"])
-        print(request)
 
         return renderPage(f"{PAGES_PATH}/main.html")
         
