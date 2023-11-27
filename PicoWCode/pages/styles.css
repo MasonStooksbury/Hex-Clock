@@ -16,6 +16,11 @@ body {
 	margin: 0;
 }
 
+label {
+	display: flex;
+	align-items: center;
+}
+
 .main-container {
 	background: #fff;
 	padding: 20px;
@@ -120,6 +125,7 @@ input[type="submit"]:hover {
 
 
 
+/* Hexagon stuff */
 
 .hexagon-container {
 	background-color: lightgrey;
@@ -218,4 +224,107 @@ input[type="submit"]:hover {
 	background-color: green;
 	-webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
 	clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+
+
+
+
+
+
+/* Slider switch stuff */
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+  
+.switch input { 
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+  
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+  
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .2s;
+	transition: .2s;
+}
+  
+input:checked + .slider {
+	background-color: #6e48aa;
+}
+  
+input:focus + .slider {
+	box-shadow: 0 0 1px #6e48aa;
+}
+  
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+  
+/* Modifies border radius of slider track */
+.slider.round {
+	border-radius: 34px;
+}
+  
+/* Modifies border radius of slider indicator */
+.slider.round:before {
+	border-radius: 50%;
+}
+
+
+
+
+
+/* Style for the select box */
+#presetColorsDropdown {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+    background-color: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect */
+#presetColorsDropdown:hover {
+    border-color: #888;
+}
+
+/* Style for the dropdown options */
+#presetColorsDropdown option {
+    padding: 10px;
+    background-color: white;
+    color: #333;
+}
+
+/* Option hover style */
+#presetColorsDropdown option:hover {
+    background-color: #f0f0f0;
 }
