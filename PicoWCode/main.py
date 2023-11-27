@@ -31,14 +31,14 @@ def setupMode():
     def script(request):
         return renderOther(f"{PAGES_PATH}/script.js")
     
-    # This is where we start, which almost immediately takes us to the login page
+    # This is where we start, which almost immediately takes us to the Login page
     def index(request):
         if request.headers.get("host").lower() != AP_DOMAIN.lower():
             return renderPage(f"{PAGES_PATH}/redirect.html", domain = AP_DOMAIN.lower())
 
         return renderPage(f"{PAGES_PATH}/login.html")
 
-    # Triggers when user hits 'Login' on the login page
+    # Called when the user hits 'Login' on the Login page
     def login(request):
         # with open(WIFI_FILE, "w") as f:
         #     json.dump(request.form, f)
@@ -48,19 +48,28 @@ def setupMode():
 
         return renderPage(f"{PAGES_PATH}/main.html")
     
+    # Called when the user hits 'Submit' on the 'Change Colors' tab
     def changeColors(request):
         off_color = request.form['offColorPicker']
         on_color = request.form['onColorPicker']
         colon_color = request.form['colonColorPicker']
+
+        # Drop back to the Login page
         return renderPage(f"{PAGES_PATH}/login.html")
 
+    # Called when the user hits 'Submit' on the 'Set Time' tab
     def changeTime(request):
         time = request.form['time']
+
+        # Drop back to the Login page
         return renderPage(f"{PAGES_PATH}/login.html")
-        
+    
+    # Called when the user hits 'Change' on the 'Configure Login' tab
     def changeLogin(request):
         new_username = request.form['newUsername']
         new_password = request.form['newPassword']
+
+        # Drop back to the Login page
         return renderPage(f"{PAGES_PATH}/login.html")
 
     server.add_route("/", handler = index, methods = ["GET"])

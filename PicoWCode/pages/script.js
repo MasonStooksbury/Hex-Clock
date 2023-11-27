@@ -2,6 +2,8 @@ const off_color = '#000000';
 const on_color = '#FF0000';
 const colon_color = '#00FF00';
 
+
+
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -16,6 +18,8 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
 }
 
+
+
 function initializeColors() {
     // Set color picker initial values
     document.getElementById('offColorPicker').value = off_color
@@ -25,7 +29,6 @@ function initializeColors() {
     // Set small hex colors
     document.getElementById('SH1').style.backgroundColor = colon_color
     document.getElementById('SH2').style.backgroundColor = colon_color
-
 
     // Set off colors
     document.getElementById('H1T2').style.borderColor = `${off_color} transparent`
@@ -45,13 +48,22 @@ function initializeColors() {
 }
 
 
+
+
+
+// On page load
 document.addEventListener('DOMContentLoaded', function () {
+    // Open the first tab by default
+    document.getElementsByClassName("tablinks")[0].click();
+
+    // Set the color of everything
+    initializeColors();    
+
     const offColorPicker = document.getElementById('offColorPicker');
     const onColorPicker = document.getElementById('onColorPicker');
     const colonColorPicker = document.getElementById('colonColorPicker');
 
-    initializeColors()
-
+    // Watch for changes to the offColorPicker
     offColorPicker.addEventListener('input', function () {
         const color = offColorPicker.value;
 
@@ -63,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('H2T5').style.borderColor = `${color} transparent`
     });
 
+    // Watch for changes to the onColorPicker
     onColorPicker.addEventListener('input', function () {
         const color = onColorPicker.value;
 
@@ -74,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('H2T6').style.borderColor = `${color} transparent`
     });
 
+    // Watch for changes to the colonColorPicker
     colonColorPicker.addEventListener('input', function () {
         const color = colonColorPicker.value;
 
