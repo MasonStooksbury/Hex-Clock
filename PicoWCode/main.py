@@ -1,5 +1,5 @@
 from phew import access_point, dns, server
-from phew.template import renderPage, renderCSS
+from phew.template import renderPage, renderOther
 import machine
 import json
 import os
@@ -17,31 +17,59 @@ def machine_reset():
     machine.reset()
 
 def setupMode():
+    def catch_all(request):
+        if request.headers.get("host") != AP_DOMAIN:
+            return renderPage(f"{PAGES_PATH}/redirect.html", domain = AP_DOMAIN)
+
+        return "Not found.", 404
+    
+    # Serves the CSS file
+    def styles(request):
+        return renderOther(f"{PAGES_PATH}/styles.css")
+    
+    # Serves the JS file
+    def script(request):
+        return renderOther(f"{PAGES_PATH}/script.js")
+    
+    # This is where we start, which almost immediately takes us to the login page
     def index(request):
         if request.headers.get("host").lower() != AP_DOMAIN.lower():
             return renderPage(f"{PAGES_PATH}/redirect.html", domain = AP_DOMAIN.lower())
 
         return renderPage(f"{PAGES_PATH}/login.html")
 
-    def configure(request):
+    # Triggers when user hits 'Login' on the login page
+    def login(request):
         # with open(WIFI_FILE, "w") as f:
         #     json.dump(request.form, f)
         #     f.close()
+        username = request.form['username']
+        password = request.form['password']
 
         return renderPage(f"{PAGES_PATH}/main.html")
+    
+    def changeColors(request):
+        off_color = request.form['offColorPicker']
+        on_color = request.form['onColorPicker']
+        colon_color = request.form['colonColorPicker']
+        return renderPage(f"{PAGES_PATH}/login.html")
+
+    def changeTime(request):
+        time = request.form['time']
+        return renderPage(f"{PAGES_PATH}/login.html")
         
-    def catch_all(request):
-        if request.headers.get("host") != AP_DOMAIN:
-            return renderPage(f"{PAGES_PATH}/redirect.html", domain = AP_DOMAIN)
-
-        return "Not found.", 404
-
-    def styles(request):
-        return renderCSS(f"{PAGES_PATH}/styles.css")
+    def changeLogin(request):
+        new_username = request.form['newUsername']
+        new_password = request.form['newPassword']
+        return renderPage(f"{PAGES_PATH}/login.html")
 
     server.add_route("/", handler = index, methods = ["GET"])
-    server.add_route("/configure", handler = configure, methods = ["POST"])
+    server.add_route("/login", handler = login, methods = ["POST"])
+    server.add_route("/change-colors", handler = changeColors, methods = ["POST"])
+    server.add_route("/change-time", handler = changeTime, methods = ["POST"])
+    server.add_route("/change-login", handler = changeLogin, methods = ["POST"])
     server.add_route("/styles.css", handler = styles, methods = ["GET"]) # This captures requests for /styles.css and handles them
+    server.add_route("/script.js", handler = script, methods = ["GET"])
     server.set_callback(catch_all)
 
     ap = access_point(AP_NAME)

@@ -16,7 +16,7 @@ body {
 	margin: 0;
 }
 
-.login-container {
+.main-container {
 	background: #fff;
 	padding: 20px;
 	border-radius: 5px;
@@ -24,7 +24,7 @@ body {
 	text-align: center;
 }
 
-.login-container h2 {
+.main-container h2 {
 	margin-bottom: 20px;
 }
 
@@ -64,10 +64,13 @@ input[type="submit"]:hover {
 
 
 
+
+
+
 /* Style the tab content */
 .tabcontent {
 	display: none;
-	padding: 20px;
+	padding: 20px 20px 0px;
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	background-color: #fff;
@@ -114,16 +117,51 @@ input[type="submit"]:hover {
 
 
 
+
+
+
+
+.hexagon-container {
+	background-color: lightgrey;
+}
+
+.main-row {
+	display: flex;
+	margin-top: 1rem;
+}
+
 .row {
 	display: flex;
+	justify-content: center;
+	margin: 0;
+	margin-top: 2rem;
 }
+
+.space-between {
+	display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 :root {
 	--hexagon-width: 100px;
 	--hexagon-height: calc(var(--hexagon-width)*0.86602540378); /* ceil(width*(sqrt(3))/2) */
 	--translate-x-value: calc(var(--hexagon-width)/4); /* height/4 */
 	--translate-y-value: calc(var(--hexagon-height)/2); /* height/2 */
-	--augmented-translate-y-value: calc(var(--translate-y-value) + 3px) /* height/2 + 3 */
+	--augmented-translate-y-value: calc(var(--translate-y-value) + 3px); /* height/2 + 3 */
+	--rotation: 60deg;
+	--first-rotation: 30deg;
+	--second-rotation: calc(var(--first-rotation) + var(--rotation));
+	--third-rotation: calc(var(--second-rotation) + var(--rotation));
+	--fourth-rotation: calc(var(--third-rotation) + var(--rotation));
+	--fifth-rotation: calc(var(--fourth-rotation) + var(--rotation));
+	--six-rotation: calc(var(--fifth-rotation) + var(--rotation));
 }
 
 .hexagon {
@@ -136,6 +174,7 @@ input[type="submit"]:hover {
 	margin: 0 auto; /* Center the hex */
 	-webkit-transform: translateX(var(--translate-x-value));
 	transform: translateX(var(--translate-x-value));
+	margin-bottom: 2rem;
 }
 
 .hexagon .triangle {
@@ -144,26 +183,39 @@ input[type="submit"]:hover {
 	height: 0;
 	border-style: solid;
 	border-width: var(--translate-y-value) var(--translate-x-value) 0;
-	border-color: #19c transparent;
+	border-color: black transparent;
 	-webkit-transform-origin: var(--translate-x-value) var(--augmented-translate-y-value);
 }
 
 .hexagon .triangle:nth-child(1) {
-	-webkit-transform: rotate(60deg);
+	-webkit-transform: rotate(var(--first-rotation));
 }
 
 .hexagon .triangle:nth-child(2) {
-	-webkit-transform: rotate(120deg);
+	-webkit-transform: rotate(var(--second-rotation));
 }
 
 .hexagon .triangle:nth-child(3) {
-	-webkit-transform: rotate(180deg);
+	-webkit-transform: rotate(var(--third-rotation));
 }
 
 .hexagon .triangle:nth-child(4) {
-	-webkit-transform: rotate(240deg);
+	-webkit-transform: rotate(var(--fourth-rotation));
 }
 
 .hexagon .triangle:nth-child(5) {
-	-webkit-transform: rotate(300deg);
+	-webkit-transform: rotate(var(--fifth-rotation));
+}
+
+.hexagon .triangle:nth-child(6) {
+	-webkit-transform: rotate(var(--six-rotation));
+}
+
+
+.small-hex {
+	height: 20px;
+	width: 20px;
+	background-color: green;
+	-webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+	clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
 }

@@ -30,8 +30,6 @@ def urldecode(text):
   return result
 
 def _parse_query_string(query_string):
-  print(query_string)
-  print('in here?')
   result = {}
   for parameter in query_string.split("&"):
     key, value = parameter.split("=", 1)
@@ -271,6 +269,8 @@ async def _handle_request(reader, writer):
     content_type = response[2] if len(response) >= 3 else "text/html"
     if 'css' in uri:
       content_type = 'text/css'
+    elif '.js' in uri:
+      content_type = 'text/javascript'
     response = Response(body, status=status)
     response.add_header("Content-Type", content_type)
     if hasattr(body, '__len__'):

@@ -66,7 +66,7 @@ async def renderPage(template, **kwargs):
 
 
 
-def renderCSS(css):
-  with open(css, 'r') as file:
+def renderOther(other):
+  with open(other, 'r') as file:
     file_requested = file.read()
   return file_requested
