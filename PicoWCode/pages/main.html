@@ -8,18 +8,25 @@
 	</head>
 
 	<body>
+		<!-- Hidden variables to be used by JS file -->
+		<p hidden id="time_variable" class="{time}"></p>
+		<p hidden id="off_color_variable" class="{off_color}"></p>
+		<p hidden id="on_color_variable" class="{on_color}"></p>
+		<p hidden id="colon_color_variable" class="{colon_color}"></p>
+
+		<!-- Main -->
 		<div class="main-container">
 			<!-- Page tabs -->
 			<div class="tab">
-				<button class="tablinks" onclick="openTab(event, 'colors')">Change Colors</button>
-				<button class="tablinks" onclick="openTab(event, 'time')">Set Time</button>
-				<button class="tablinks" onclick="openTab(event, 'login')">Configure Login</button>
+				<button class="tablinks" onclick="openTab(event, 'colors-tab')">Change Colors</button>
+				<button class="tablinks" onclick="openTab(event, 'time-tab')">Set Time</button>
+				<button class="tablinks" onclick="openTab(event, 'login-tab')">Configure Login</button>
 			</div>
 
 			<br>
 
 			<!-- Change Colors Tab -->
-			<div id="colors" class="tabcontent hexagon-container">
+			<div id="colors-tab" class="tabcontent hexagon-container">
 				<form action="/change-colors" method="POST" autocomplete="off" autocapitalize="none">
 					<div class="main-row space-between">
 						<div class="column">
@@ -71,7 +78,7 @@
 			</div>
 
 			<!-- Change Time Tab -->
-			<div id="time" class="tabcontent">
+			<div id="time-tab" class="tabcontent">
 				<h2>Set Time</h2>
 				<form action="/change-time" method="POST" autocomplete="off" autocapitalize="none">
 					<div class="form-group">
@@ -88,7 +95,7 @@
 			</div>
 
 			<!-- Change Login Tab -->
-			<div id="login" class="tabcontent">
+			<div id="login-tab" class="tabcontent">
 				<h2>Change Login</h2>
 				<form action="/change-login" method="POST" autocomplete="off" autocapitalize="none">
 					<div class="form-group">

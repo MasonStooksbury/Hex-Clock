@@ -14,7 +14,9 @@ def fetch(synch_with_rtc=True, timeout=10):
     data = socket.recv(48)
     socket.close()
     local_epoch = 2208988800 # selected by Chris - blame him. :-D
+    print('before timestamp unpack')
     timestamp = struct.unpack("!I", data[40:44])[0] - local_epoch
+    print('after timestamp unpack')
     timestamp = time.gmtime(timestamp)
   except Exception as e:
     return None

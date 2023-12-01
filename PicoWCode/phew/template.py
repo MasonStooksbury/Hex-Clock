@@ -4,6 +4,8 @@ async def renderPage(template, **kwargs):
   import time
   start_time = time.ticks_ms()
 
+  print('in renderPage')
+
   with open(template, "rb") as f:
     # read the whole template file, we could work on single lines but
     # the performance is much worse - so long as our templates are

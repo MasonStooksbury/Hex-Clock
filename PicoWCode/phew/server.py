@@ -32,7 +32,9 @@ def urldecode(text):
 def _parse_query_string(query_string):
   result = {}
   for parameter in query_string.split("&"):
+    print('in parse query string')
     key, value = parameter.split("=", 1)
+    print('after unpack PQS')
     key = urldecode(key)
     value = urldecode(value)
     result[key] = value
@@ -124,19 +126,22 @@ class Route:
     compare_parts = request.path.split("/")
     if len(compare_parts) != len(self.path_parts):
       return False
+    print('in route class matches')
     for part, compare in zip(self.path_parts, compare_parts):
       if not part.startswith("<") and part != compare:
         return False
+    print('after route class matches unpack')
     return True
 
   # call the route handler passing any named parameters in the path
   def call_handler(self, request):
     parameters = {}
+    print('in route class call_handler')   
     for part, compare in zip(self.path_parts, request.path.split("/")):
       if part.startswith("<"):
         name = part[1:-1]
         parameters[name] = compare
-
+    print('after route class call_handler unpack')
     return self.handler(request, **parameters)
         
   def __str__(self):
@@ -155,8 +160,12 @@ async def _parse_headers(reader):
   headers = {}
   while True:
     header_line = await reader.readline()
-    if header_line == b"\r\n": # crlf denotes body start
+    # CRLF denotes body start
+    if header_line == b"\r\n" or header_line == b'':
       break
+    # This should capture any weird nonsense that I noticed during testing
+    if ': ' not in header_line:
+      continue
     name, value = header_line.decode().strip().split(": ", 1)
     headers[name.lower()] = value
   return headers
@@ -172,6 +181,7 @@ def _match_route(request):
 
 # if the content type is multipart/form-data then parse the fields
 async def _parse_form_data(reader, headers):
+  print('in parse form data')
   boundary = headers["content-type"].split("boundary=")[1]
   # discard first boundary line
   dummy = await reader.readline()
@@ -179,7 +189,9 @@ async def _parse_form_data(reader, headers):
   form = {}
   while True:
     # get the field name
+    print('before headers')
     field_headers = await _parse_headers(reader)
+    print('after headers')
     if len(field_headers) == 0:
       break
     name = field_headers["content-disposition"].split("name=\"")[1][:-1]
@@ -229,15 +241,30 @@ async def _handle_request(reader, writer):
   response = None
 
   request_start_time = time.ticks_ms()
+  print('reader', reader)
 
   request_line = await reader.readline()
+  print('request_line', request_line)
+  failed = False
+  if request_line == b'':
+    print('weird shit')
   try:
+    print('handle_request')
     method, uri, protocol = request_line.decode().split()
+    print('handlerequest_after unpack')
   except Exception as e:
-    logging.error(e)
-    return
+    print('handle_request unpack error')
+    method = 'GET'
+    uri = '/redirect'
+    protocol = 'HTTP/1.1\r\n'
+    failed = True
 
+    # logging.error(e)
+    # return
+
+  print('handle_request check 1')
   request = Request(method, uri, protocol)
+  print('handle_request check 1 after unpack')
   request.headers = await _parse_headers(reader)
   if "content-length" in request.headers and "content-type" in request.headers:
     if request.headers["content-type"].startswith("multipart/form-data"):
@@ -248,22 +275,28 @@ async def _handle_request(reader, writer):
       form_data = await reader.read(int(request.headers["content-length"]))
       request.form = _parse_query_string(form_data.decode()) 
 
+  print('heres the thing', request)
   route = _match_route(request)
   if route:
+    print('is route')
     response = route.call_handler(request)
   elif catchall_handler:
+    print('in catchall_handler')
     response = catchall_handler(request)
 
   # if shorthand body generator only notation used then convert to tuple
   if type(response).__name__ == "generator":
+    print('in generator')
     response = (response,)
 
   # if shorthand body text only notation used then convert to tuple
   if isinstance(response, str):
+    print('first isinstance')
     response = (response,)
 
   # if shorthand tuple notation used then build full response object
   if isinstance(response, tuple):
+    print('second isinstance')
     body = response[0]
     status = response[1] if len(response) >= 2 else 200
     content_type = response[2] if len(response) >= 3 else "text/html"
@@ -277,16 +310,19 @@ async def _handle_request(reader, writer):
       response.add_header("Content-Length", len(body))
   
   # write status line
+  print('response status access 1', response)
   status_message = status_message_map.get(response.status, "Unknown")
   writer.write(f"HTTP/1.1 {response.status} {status_message}\r\n".encode("ascii"))
 
   # write headers
+  print('checkpoint 2')
   for key, value in response.headers.items():
     writer.write(f"{key}: {value}\r\n".encode("ascii"))
+  print('checkpoint2 after unpack')
 
   # blank line to denote end of headers
   writer.write("\r\n".encode("ascii"))
- 
+
   if isinstance(response, FileResponse):
     # file
     with open(response.file, "rb") as f:
@@ -309,6 +345,7 @@ async def _handle_request(reader, writer):
   writer.close()
   await writer.wait_closed()
   
+  print('response status access 2', response)
   processing_time = time.ticks_ms() - request_start_time
   logging.info(f"> {request.method} {request.path} ({response.status} {status_message}) [{processing_time}ms]")
 
