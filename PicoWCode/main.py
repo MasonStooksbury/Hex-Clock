@@ -64,17 +64,12 @@ def render(filepath, **kwargs):
 def mainStyles():
     return render(f'{PAGES_PATH}/main-styles.css')
 def mainJavascript():
+    # TODO: Need to add "Content-Type: text/javascript" to a header somewhere
     return render(f'{PAGES_PATH}/main-script.js', **getValuesFromConfig('time', 'off_color', 'on_color', 'colon_color'))
     
 
 def loginStyles():
     return render(f'{PAGES_PATH}/login-styles.css')
-def loginJavascript():
-    # TODO: Need to add "Content-Type: text/javascript" to a header somewhere
-    # Not really secure. This basically injects the login into the JS for the login page. Anyone could view the response of '/' in the 
-    #       network tab and be able to login lol. But this is mainly to keep out noobs and randos from accessing your clock.
-    # All that being said, if they're not on the wifi 
-    return render(f'{PAGES_PATH}/login-script.js')
 
 
 def index():
@@ -83,14 +78,10 @@ def index():
 def main():
     return render(f'{PAGES_PATH}/main.html')
 
-def leave():
-    pass
-
-
 
 # Setup a custom AP
 ap = network.WLAN(network.AP_IF)
-# Create an open AP
+# Create an open AP (i.e. no password needed to connect)
 ap.config(essid=getValuesFromConfig('ap_ssid')['ap_ssid'], security=0)
 
 
@@ -98,6 +89,7 @@ ap.config(essid=getValuesFromConfig('ap_ssid')['ap_ssid'], security=0)
 
 def activateAP():
     global IS_AUTHENTICATED
+    global login_error_status
 
     # Available routes the AP will respond to
     # It's important to make these callbacks and not function calls because - while it will still work - it saves the render in this dictionary and never calls it again
@@ -109,11 +101,12 @@ def activateAP():
         '/login-styles.css': loginStyles,
         '/main-styles.css': mainStyles,
         '/main-script.js': mainJavascript,
-        '/leave': leave
+        '/leave': '' # We don't need anything here because the loop breaks before we try and hit this
     }
 
     # Activate AP
     ap.active(True)
+    print('re?')
 
     # Wait till it's active before we do anything
     while ap.active() == False:
@@ -130,8 +123,11 @@ def activateAP():
 
     # Connection loop (wait around, accept connections, respond to appropriate routes with the right content, etc)
     while True:
-        conn, addr = s.accept()
-        print('Got a connection from: %s' % str(addr))
+        # Accept the connection
+        conn, _ = s.accept()
+        # print('Got a connection from: %s' % str(addr))
+
+        # Get the request it sent
         request = conn.recv(1024)
         print('request', request)
 
@@ -145,8 +141,6 @@ def activateAP():
         # Decode our request string and only get the route
         # Looks like: "GET /index HTTP/1.1 ......"
         route = request.decode().split()[1]
-
-
 
 
         if route == '/main':
@@ -168,6 +162,10 @@ def activateAP():
                     #       the /main route is already authenticated
                     if username == credentials['username'] and password == credentials['password']:
                         IS_AUTHENTICATED = True
+                        login_error_status = 'none'
+                    else:
+                        route = '/'
+                        login_error_status = 'block'
                     print('returning main route')
                 except:
                     route = '/'
