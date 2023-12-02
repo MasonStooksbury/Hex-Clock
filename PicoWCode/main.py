@@ -207,11 +207,11 @@ def activateAP():
             continue
 
         # Don't let them get anything for the main page unless they're authenticated
-        # if route == '/main-styles.css' or route == '/main-script.js':
-        #     if not IS_AUTHENTICATED:
-        #         print('not authenticated')
-        #         conn.close()
-        #         continue
+        if route == '/main-styles.css' or route == '/main-script.js':
+            if not IS_AUTHENTICATED:
+                print('not authenticated')
+                conn.close()
+                continue
 
         print(route)
         # Send the connected thing the appropriate page for the route they requested
