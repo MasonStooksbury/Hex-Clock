@@ -7,6 +7,7 @@ AP_PASSWORD = "password123"
 AP_DOMAIN = "hexclock.com"
 PAGES_PATH = "pages"
 CONFIG_FILE_PATH = 'config.json'
+IS_AUTHENTICATED = False
 
 
 
@@ -53,28 +54,38 @@ def render(other, **kwargs):
     return file_requested
 
 
-def styles():
-    return render(f'{PAGES_PATH}/styles.css')
+def isValidUser(username, password):
+    config_username, config_password = getValuesFromConfig('username', 'password').values()
+    return username == config_username and password == config_password
 
-def javascript():
+def styles(page='main'):
+    if page == 'login':
+        return render(f'{PAGES_PATH}/login-styles.css')
+    return render(f'{PAGES_PATH}/main-styles.css')
+
+def javascript(page='main'):
     # The reason I don't pass the variables from main() directly into the JS file here is that format doesn't work the same because of all the other {} in it
     # TODO: Need to add "Content-Type: text/javascript" to a header somewhere
-    return render(f'{PAGES_PATH}/script.js')
+    if page == 'login':
+        return render(f'{PAGES_PATH}/login-script.js')
+    return render(f'{PAGES_PATH}/main-script.js')
 
-def login():
-    return render(f'{PAGES_PATH}/login.html')
+def index():
+    return render(f'{PAGES_PATH}/login.html' **getValuesFromConfig('username', 'password'))
 
 def main():
-    return render(f'{PAGES_PATH}/main.html', **getValuesFromConfig('time', 'off_color', 'on_color', 'colon_color'))
+    return render(f'{PAGES_PATH}/main.html', **getValuesFromConfig('time', 'off_color', 'on_color', 'colon_color', 'username', 'password'))
 
 
 
 # Available routes the AP will respond to
 routes = {
-    '/': login(),
+    '/': index(),
     '/main': main(),
-    '/styles.css': styles(),
-    '/script.js': javascript()
+    '/login-styles.css': styles('login'),
+    '/login-script.js': javascript('login'),
+    '/main-styles.css': styles(),
+    '/main-script.js': javascript()
 }
 
 # Setup a custom AP
@@ -106,17 +117,55 @@ while True:
     # Decode our request string and only get the route
     # Looks like: "GET /index HTTP/1.1 ......"
     route = request.decode().split()[1]
+
     if route == '/main':
-        # Request has the values at the end like this, so we isolate them off with split() magic
-        #       pt-Language: en-US,en;q=0.9\r\n\r\nusername=myusername&password=mypassword'
-        username, password = request.decode().split('\r\n')[-1].split('&')
-        # Save these values to the config file so they can be read later by the main.html handler
-        updateValuesInConfig(username=username.split('=')[-1], password=password.split('=')[-1])
+        # If they're not authenticated, don't let them get to /main
+        # Also prevents them from hitting the other block where it will fail because they probably 
+        #       didn't send username/password
+        if not IS_AUTHENTICATED:
+            route = '/'
+        else:
+            # Get the username/password that was attached to the request
+            username, password = request.decode().split('\r\n')[-1].split('&')
+            username = username.split('=')[-1]
+            password = password.split('=')[-1]
+
+            # Get the username/password from our config file
+            config_username, config_password = getValuesFromConfig('username', 'password').values()
+
+            # Technically the login page itself is equipped to accurately authenticate someone, but we do it here in case
+            #       some bad actor hits the /main route. Otherwise, we could not have this block and assume anything hitting
+            #       the /main route is already authenticated
+            if username == config_username and password == config_password:
+                IS_AUTHENTICATED = True
+
+    elif route == '/change-login':
+        if IS_AUTHENTICATED:
+            # Get the username/password that was attached to the request
+            new_username, new_password = request.decode().split('\r\n')[-1].split('&')
+
+            # Save these values to the config file so they can be read later
+            updateValuesInConfig(username = new_username.split('=')[-1], password = new_password.split('=')[-1])
+
+            # Take them to /main. This will trigger a re-render so that the JavaScript file has the updated values
+            route = '/main'
+
+    elif route == '/change-time':
+        if IS_AUTHENTICATED:
+            new_time = request.decode().split('\r\n')[-1]
+            print(new_time)
+            #updateValuesInConfig(time = new_time)
 
     # Only respond to routes that are specified
     if route == '' or route == b'' or route is None or route not in routes.keys():
         continue
 
+    # If we get this far, and they're not authenticated, we want to make sure they stay on the login page
+    #       Not doing so would mean they could hit other routes and potentially do weird stuff
+    # if not IS_AUTHENTICATED:
+    #     route = '/'
+
+    print(route)
     # Send the connected thing the appropriate page for the route they requested
     conn.sendall(routes[route])
 

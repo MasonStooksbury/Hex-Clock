@@ -2,9 +2,11 @@
 let off_color = '#000000';
 /* Color of 1s when shown on the clock */
 let on_color = '#000000';
-/* Color of the colons in the middle of the clock (will fade between black and this color and back) */
+/* Color of the colons in the middle of the clock (will fade between black to this color and back) */
 let colon_color = '#000000';
 let time = '04:16';
+let username = '';
+let password = '';
 
 
 /* Array of options for preset colors dropdown */
@@ -32,12 +34,14 @@ function openTab(evt, tabName) {
 }
 
 
-
+/* Set local variables to values from the server's config file */
 function initializeConfigVariables() {
     time = document.getElementById("time_variable").className;
     off_color = document.getElementById("off_color_variable").className;
     on_color = document.getElementById("on_color_variable").className;
     colon_color = document.getElementById("colon_color_variable").className;
+    username = document.getElementById("username_variable").className;
+    password = document.getElementById("password_variable").className;
 }
 
 /* Set small hex colors */

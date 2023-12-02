@@ -4,10 +4,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hex Clock Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login-styles.css">
+    <script src="login-script.js"></script>
 </head>
 
 <body>
+    <p hidden id="username_variable" class="{username}"></p>
+    <p hidden id="password_variable" class="{password}"></p>
+
     <div class="main-container">
         <h2>Hex Clock</h2>
         <form action="/main" method="POST" autocomplete="off" autocapitalize="none">
@@ -20,6 +24,7 @@
             <div class="form-group">
                 <input type="submit" value="Login">
             </div>
+            <p id="errorMessage" class="error-box">Invalid username or password</p>
         </form>
     </div>
 </body>

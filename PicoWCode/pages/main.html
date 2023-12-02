@@ -3,29 +3,31 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Configure the Hex Clock</title>
-		<link rel="stylesheet" href="styles.css">
-		<script src="script.js"></script>
+		<link rel="stylesheet" href="main-styles.css">
+		<script src="main-script.js"></script>
 	</head>
 
 	<body>
 		<!-- Hidden variables to be used by JS file -->
-		<p hidden id="time_variable" class="12:44"></p>
+		<!-- <p hidden id="time_variable" class="12:44"></p>
 		<p hidden id="off_color_variable" class="#000000"></p>
 		<p hidden id="on_color_variable" class="#FAE500"></p>
-		<p hidden id="colon_color_variable" class="#FAE500"></p>
+		<p hidden id="colon_color_variable" class="#FAE500"></p> -->
 
-		<!-- <p hidden id="time_variable" class="{time}"></p> -->
-		<!-- <p hidden id="off_color_variable" class="{off_color}"></p> -->
-		<!-- <p hidden id="on_color_variable" class="{on_color}"></p> -->
-		<!-- <p hidden id="colon_color_variable" class="{colon_color}"></p> -->
+		<p hidden id="time_variable" class="{time}"></p>
+		<p hidden id="off_color_variable" class="{off_color}"></p>
+		<p hidden id="on_color_variable" class="{on_color}"></p>
+		<p hidden id="colon_color_variable" class="{colon_color}"></p>
+		<p hidden id="username_variable" class="{username}"></p>
+		<p hidden id="password_variable" class="{password}"></p>
 
 		<!-- Main -->
 		<div class="main-container">
 			<!-- Page tabs -->
 			<div class="tab">
-				<button class="tablinks" onclick="openTab(event, 'colors-tab')">Change Colors</button>
+				<button class="tablinks" onclick="openTab(event, 'colors-tab')">Set Colors</button>
 				<button class="tablinks" onclick="openTab(event, 'time-tab')">Set Time</button>
-				<button class="tablinks" onclick="openTab(event, 'login-tab')">Configure Login</button>
+				<button class="tablinks" onclick="openTab(event, 'login-tab')">Change Login</button>
 			</div>
 
 			<br>

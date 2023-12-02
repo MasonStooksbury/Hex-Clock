@@ -1,0 +1,80 @@
+/* Keyframes for shimmering gradient animation */
+@keyframes shimmerGradient {
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
+}
+
+
+.error-box {
+    background-color: #ffdddd; /* Light red background */
+    color: #d8000c; /* Darker red text color */
+    padding: 10px; /* Padding inside the box */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #d8000c; /* Red border */
+    margin: 10px 0; /* Margin for spacing */
+    display: none; /* Initially hidden */
+    text-align: center; /* Centered text */
+}
+
+
+
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+}
+
+label {
+	display: flex;
+	align-items: center;
+}
+
+.main-container {
+	background: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.main-container h2 {
+	margin-bottom: 20px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	background-image: linear-gradient(to right, #6e48aa, #9d50bb, #6e48aa, #9d50bb);
+	background-size: 200% 200%; /* Enlarge background for shimmering effect */
+	transition: color 0.3s; /* Transition for color change */
+
+	/* Apply the shimmering gradient animation */
+	animation: shimmerGradient 2s linear infinite;
+}
+
+/* Hover effect for the submit button */
+input[type="submit"]:hover {
+	color: #f1f1f1; /* Change text color on hover */
+}
