@@ -1,1 +1,11 @@
-{"username": "flump", "password": "doople", "off_color": "#000000", "on_color": "#FAE500", "colon_color": "#FAE500", "time": "14:59"}
+{
+    "username": "flump",
+    "password": "doople",
+    "off_color": "#000000",
+    "on_color": "#FAE500",
+    "colon_color": "#FAE500",
+    "time": "14:59",
+    "ap_ssid": "Hex Clock",
+    "ap_domain": "hexclock.com",
+    "start_ap": "True"
+}

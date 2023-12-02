@@ -1,11 +1,17 @@
-let config_username = '';
-let config_password = '';
+let config_username = '~~username~~';
+let config_password = '~~password~~';
 
 
 /* Set local variables to values from the server's config file */
 function initializeConfigVariables() {
-    config_username = document.getElementById("username_variable").className;
-    config_password = document.getElementById("password_variable").className;
+    username_element = document.getElementById("username_variable")
+    password_element = document.getElementById("password_variable")
+    config_username = username_element.className;
+    config_password = password_element.className;
+
+    /* After we've read in the values, remove them from the HTML entirely */
+    username_element.remove()
+    password_element.remove()
 }
 
 

@@ -3,24 +3,12 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Configure the Hex Clock</title>
+		<link rel="icon" href="data:,">
 		<link rel="stylesheet" href="main-styles.css">
 		<script src="main-script.js"></script>
 	</head>
 
 	<body>
-		<!-- Hidden variables to be used by JS file -->
-		<!-- <p hidden id="time_variable" class="12:44"></p>
-		<p hidden id="off_color_variable" class="#000000"></p>
-		<p hidden id="on_color_variable" class="#FAE500"></p>
-		<p hidden id="colon_color_variable" class="#FAE500"></p> -->
-
-		<p hidden id="time_variable" class="{time}"></p>
-		<p hidden id="off_color_variable" class="{off_color}"></p>
-		<p hidden id="on_color_variable" class="{on_color}"></p>
-		<p hidden id="colon_color_variable" class="{colon_color}"></p>
-		<p hidden id="username_variable" class="{username}"></p>
-		<p hidden id="password_variable" class="{password}"></p>
-
 		<!-- Main -->
 		<div class="main-container">
 			<!-- Page tabs -->
@@ -34,7 +22,7 @@
 
 			<!-- Change Colors Tab -->
 			<div id="colors-tab" class="tabcontent hexagon-container">
-				<form action="/change-colors" method="POST" autocomplete="off" autocapitalize="none">
+				<form action="/change-colors" method="POST" autocomplete="off" autocapitalize="none" accept-charset=utf-8>
 					<div class="main-row space-between">
 						<div class="column">
 							<div class="hexagon">
@@ -87,7 +75,7 @@
 			<!-- Change Time Tab -->
 			<div id="time-tab" class="tabcontent">
 				<h2>Set Time</h2>
-				<form action="/change-time" method="POST" autocomplete="off" autocapitalize="none">
+				<form action="/change-time" method="POST" autocomplete="off" autocapitalize="none" accept-charset=utf-8>
 					<div class="form-group">
 						<label for="time">Enter current time (HH:MM, 24-hour format):</label>
 						<br>
@@ -104,7 +92,7 @@
 			<!-- Change Login Tab -->
 			<div id="login-tab" class="tabcontent">
 				<h2>Change Login</h2>
-				<form action="/change-login" method="POST" autocomplete="off" autocapitalize="none">
+				<form action="/change-login" method="POST" autocomplete="off" autocapitalize="none" accept-charset=utf-8>
 					<div class="form-group">
 						<input type="text" placeholder="New Username" name="newUsername" required>
 					</div>
@@ -116,6 +104,14 @@
 					</div>
 				</form>
 			</div>
+
+			<br>
+
+			<form action="/leave" method="POST" autocomplete="off" autocapitalize="none" accept-charset=utf-8>
+				<div class="form-group" style="margin: 0rem;">
+					<input type="submit" value="Leave">
+				</div>
+			</form>
 		</div>
 	</body>
 

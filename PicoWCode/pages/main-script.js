@@ -1,12 +1,10 @@
 /* Color of 0s when shown on the clock */
-let off_color = '#000000';
+let off_color = '~~off_color~~';
 /* Color of 1s when shown on the clock */
-let on_color = '#000000';
+let on_color = '~~on_color~~';
 /* Color of the colons in the middle of the clock (will fade between black to this color and back) */
-let colon_color = '#000000';
-let time = '04:16';
-let username = '';
-let password = '';
+let colon_color = '~~colon_color~~';
+let time = '~~time~~';
 
 
 /* Array of options for preset colors dropdown */
@@ -35,14 +33,12 @@ function openTab(evt, tabName) {
 
 
 /* Set local variables to values from the server's config file */
-function initializeConfigVariables() {
+/* function initializeConfigVariables() {
     time = document.getElementById("time_variable").className;
     off_color = document.getElementById("off_color_variable").className;
     on_color = document.getElementById("on_color_variable").className;
     colon_color = document.getElementById("colon_color_variable").className;
-    username = document.getElementById("username_variable").className;
-    password = document.getElementById("password_variable").className;
-}
+} */
 
 /* Set small hex colors */
 function setColonColor(new_colon_color) {
@@ -168,7 +164,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByClassName("tablinks")[0].click();
 
     /* Grab variables from HTML and set them here */
-    initializeConfigVariables();
+    /* TODO: Delete this */
+    /* initializeConfigVariables(); */
 
     /* Set the color of everything to the first preset */
     const preset_colors = getColorsFromPreset(presetColors[0].value);
