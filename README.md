@@ -36,7 +36,6 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
 
 # Developing and Testing
 ### This will put all of your code onto the pico, and allow you to start testing
-- Once you've written some code, let's put it on the pico
 - Click the `All commands` footer button
 - Click `MicroPico: Upload project to Pico`. This will put all of the files in the lefthand explorer onto the pico (this is why we need to open *only* the `PicoWCode` folder in VSCode)
 - Once finished, it's often good to do a soft reset (no idea why, I've just noticed it help sometimes) simply click the `Reset` footer button
