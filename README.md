@@ -10,9 +10,9 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
 
 # Setup Instructions
 ### Download these things (if you don't already have them)
-- Install VSCode: [link](https://code.visualstudio.com/download)
+- Download VSCode: [link](https://code.visualstudio.com/download)
 - Install VSCode Extension `MicroPico` by paulober
-- Firmware for RaspberryPi PicoW (if you haven't already done this): [latest](https://rpf.io/pico-w-firmware)
+- Download firmware for RaspberryPi PicoW (if you haven't already done this): [latest](https://rpf.io/pico-w-firmware)
 - Download/Clone the code from this repo
 
 <br><br><br>
