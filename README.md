@@ -1,7 +1,9 @@
 # Hex Clock
 
 From the mind of inventor Johnathan Wood comes the: *Hex Clock*. A novel timepiece combining two of Johnathan's favorite things: technology and hexagons. The Hex Clock uses two hexagons to represent sexigesimal time using two 6-bit numbers wrapped around hexagons. Let's see a picture that will hopefully make more sense.
+
 <br>
+
 ![Description of how the clock works](https://github.com/MasonStooksbury/Hex-Clock/blob/main/Pictures/clock-explanation.png?raw=true)
 
 <br><br><br>
