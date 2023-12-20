@@ -4,11 +4,11 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
 
 <br>
 
-![Description of how the clock works](https://github.com/MasonStooksbury/Hex-Clock/blob/main/Pictures/clock-explanation.png?raw=true)
+![Visual description of how the clock works](https://github.com/MasonStooksbury/Hex-Clock/blob/main/Pictures/clock-explanation.png?raw=true)
 
 <br><br><br>
 
-# Setup Instructions
+# Pre-setup Instructions
 ### Download these things (if you don't already have them)
 - Download VSCode: [link](https://code.visualstudio.com/download)
 - Install VSCode Extension `MicroPico` by paulober
@@ -41,3 +41,33 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
 - Once finished, it's often good to do a soft reset (no idea why, I've just noticed it help sometimes) simply click the `Reset` footer button
 - Make sure that the `main.py` (or whatever `.py` file you are currently testing) is open and focused
 - Click the `Run` footer button
+  
+<br><br><br>
+
+# Connecting to the Pico and Using the Web App
+### These instructions will help you connect to the Pico with your phone or other device and use the webapp that allows you to set the clock colors, change the time, or change the login credentials
+- Either plug in the pico to an external power source or - if developing with VSCode open - connect the pico, open the main.py file, and click the `Run` footer button
+- Once you see the `AP is active. You can now connect` message, the pico wifi access point (AP) is ready to receive connections
+- Take note of the IP address listed just below this as you will need it in a moment (NOTE: In final version, this will hopefully be replaced with a domain name that you can connect to)
+- On a wifi-enabled device, look for the `Hex Clock` network and connect to it (this is the default name and can be changed in the `main.py` script if desired)
+- Once connected, open your web browser and type in the IP address from the previous step into the address bar
+- At this point, you should see the Hex Clock login screen
+- Login with these default credentials:
+  - Username: `flump`
+  - Password: `doople`
+
+<br><br><br>
+
+# Troubleshooting
+### These are some things I've run into and how to fix them
+- Every now and then when you try to run `main.py` and the AP attempts to start up you might see this error: `OSError: [Errno 98] EADDRINUSE`. Follow these steps to mitigate it
+  - If running, click the `Stop` footer button
+  - Click the `Reset` footer button to perform a soft reset of the pico
+  - Click the `Run` footer button again
+  - If the above steps do not work, you can also just try click `Run` over and over again. Usually after 3-5 attempts it will work
+- Sometimes when trying to hit the `Run` footer button you will see: `SyntaxError: invalid syntax`. Typically this just means that you have the wrong script focused. Make sure you are on the `main.py` script (or whatever script you're working on)
+
+<br><br><br>
+
+# Changing the Access Point SSID
+- Fill this out
