@@ -1,6 +1,6 @@
 # Hex Clock
 
-From the mind of inventor Johnathan Wood comes the: *Hex Clock*. A novel timepiece combining two of Johnathan's favorite things: technology and hexagons. The Hex Clock uses two hexagons to represent sexigesimal time using two 6-bit numbers wrapped around hexagons. Let's see a picture that will hopefully make more sense.
+From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepiece combining two of Johnathan's favorite things: technology and hexagons. The Hex Clock uses two hexagons to represent sexigesimal time using two 6-bit numbers wrapped around hexagons. Let's see a picture that will hopefully make more sense.
 
 <br>
 
