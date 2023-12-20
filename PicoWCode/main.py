@@ -12,23 +12,19 @@ pcb = neopixel.NeoPixel(Pin(HOURS_HEX_DATA_PIN), NUM_LEDS, bpp=4) # bpp=4 tells 
 
 
 # This layout matches how the PCB is currently wired
-tris = [[0,1,2],
-[3,4,5],
-[6,7,8],
-[9,10,11],
-[12,13,14],
-[15,16,17]]
-
-# Represents the color that will show when the bit in the time is 1
-ON_COLOR = (255,0,0,0)
-# Represents the color that will show when the bit in the time is 0
-OFF_COLOR = (0,0,0,0)
+tris = [
+    [0,1,2],    # Least significant bit
+    [3,4,5],
+    [6,7,8],
+    [9,10,11],
+    [12,13,14],
+    [15,16,17]  # Most significant bit
+]
 
 
 
 
 # NOTE: I do not recommend putting "pcb.write()" in any of the set methods as it can cause artifacts for faster animations
-
 
 
 # This will set a particular LED in our "strip" to the specified color
@@ -41,13 +37,10 @@ def setTri(tri, color):
         setLed(led, color)
 
 # Sets the necessary LEDs to match the binary string representing a decimal number
-def binaryToClock(time_in_binary):
+def binaryToClock(time_in_binary, on_color, off_color):
     # You can either loop through the tris in reverse, or reverse the string. Either one makes it a little easier to assign
     for index, bit in enumerate(''.join(list(reversed(time_in_binary)))):
-        setTri(tris[index], ON_COLOR if bit == '1' else OFF_COLOR)
-
-    
-
+        setTri(tris[index], on_color if bit == '1' else off_color)
 
 # Clear the PCB by setting everyting to a color of (0,0,0,0)
 def clear():
@@ -55,8 +48,11 @@ def clear():
         setLed(led, BLANK)
         pcb.write()
 
+
+
+# clear()
             
-# binaryToClock('101010')
+# binaryToClock('101010', (255,0,0,0), (0,0,0,0))
 # pcb.write()
 # sleep(5)
 

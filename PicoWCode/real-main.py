@@ -2,7 +2,7 @@ import json, re, network, socket, machine, gc
 from time import sleep
 
 # Highly recommended to set a lowish garbage collection threshold to minimise memory fragmentation as we sometimes want to
-#       allocate relatively large blocks of ram
+#       allocate relatively large blocks of RAM
 gc.threshold(50000)
 
 PAGES_PATH = "pages"
@@ -40,13 +40,13 @@ def updateValuesInConfig(**kwargs):
     with open(CONFIG_FILE_PATH, 'w') as f:
         try:
             json.dump(data, f)
-            print('values have been successfully updated')
+            print('Values in config file have been successfully updated')
             return True
         except:
             return False
 
 
-
+# Sends a page to the client ("renders" it). Will augment it with any passed-in kwargs where applicable
 def render(filepath, **kwargs):
     file_requested = ''
     # Read the passed-in file to a variable
@@ -61,22 +61,29 @@ def render(filepath, **kwargs):
     return file_requested
 
 
+##############################################
+################## PAGES #####################
+##############################################
+# These methods return various things to the client when requested. The reason these are in separate methods is to 
+#       allow for more logic once we start integrating the clock (or we want to add other stuff)
 def mainStyles():
     return render(f'{PAGES_PATH}/main-styles.css')
+
 def mainJavascript():
     # TODO: Need to add "Content-Type: text/javascript" to a header somewhere
     return render(f'{PAGES_PATH}/main-script.js', **getValuesFromConfig('time', 'off_color', 'on_color', 'colon_color'))
-    
 
 def loginStyles():
     return render(f'{PAGES_PATH}/login-styles.css')
-
 
 def index():
     return render(f'{PAGES_PATH}/login.html', errorStatus = login_error_status)
 
 def main():
     return render(f'{PAGES_PATH}/main.html')
+##############################################
+##############################################
+##############################################
 
 
 # Setup a custom AP
@@ -86,7 +93,7 @@ ap.config(essid=getValuesFromConfig('ap_ssid')['ap_ssid'], security=0)
 
 
 
-
+# Activate the AP and respond to routes
 def activateAP():
     global IS_AUTHENTICATED
     global login_error_status
@@ -101,12 +108,11 @@ def activateAP():
         '/login-styles.css': loginStyles,
         '/main-styles.css': mainStyles,
         '/main-script.js': mainJavascript,
-        '/leave': '' # We don't need anything here because the loop breaks before we try and hit this
+        '/leave': '' # We don't need anything here because the loop breaks before we try and hit this. But the entry still needs to be here
     }
 
     # Activate AP
     ap.active(True)
-    print('re?')
 
     # Wait till it's active before we do anything
     while ap.active() == False:
@@ -117,9 +123,10 @@ def activateAP():
     # Once active, listen for connections
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # This helps with this error: OSError: [Errno 98] EADDRINUSE
+    # TODO: Very rarely you will get this error anyway. Add some retry logic to do this a few times if it fails
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(('', 80))
-    s.listen(5)
+    s.listen(5) # Allows 5 connections. We could change this, but 5 is fine for now
 
     # Connection loop (wait around, accept connections, respond to appropriate routes with the right content, etc)
     while True:
@@ -140,6 +147,7 @@ def activateAP():
 
         # Decode our request string and only get the route
         # Looks like: "GET /index HTTP/1.1 ......"
+        # Will save route as: /index
         route = request.decode().split()[1]
 
 
@@ -157,22 +165,22 @@ def activateAP():
                     # Get the username/password from our config file
                     credentials = getValuesFromConfig('username', 'password')
 
-                    # Technically the login page itself is equipped to accurately authenticate someone, but we do it here in case
-                    #       some bad actor hits the /main route. Otherwise, we could not have this block and assume anything hitting
-                    #       the /main route is already authenticated
+                    # If username/password matches the config file, let them in
                     if username == credentials['username'] and password == credentials['password']:
                         IS_AUTHENTICATED = True
                         login_error_status = 'none'
+                    # Otherwise, set the error block on the login page and change the route back to the login
                     else:
                         route = '/'
                         login_error_status = 'block'
-                    print('returning main route')
                 except:
                     route = '/'
             else:
                 print('username/password not in request')
 
+        # Change the login credentials
         elif route == '/change-login':
+            # Only let them do this if they're authenticated
             if IS_AUTHENTICATED:
                 print('change login request')
                 # Get the username/password that was attached to the request
@@ -181,10 +189,12 @@ def activateAP():
                 # Save these values to the config file so they can be read later
                 updateValuesInConfig(username = new_username.split('=')[-1], password = new_password.split('=')[-1])
 
-                # Take them to /main. This will trigger a re-render so that the JavaScript file has the updated values
+                # Take them to /main. This will trigger a re-render
                 route = '/main'
 
+        # Change the time (both in the web so it shows the correct time and on the clock itself)
         elif route == '/change-time':
+            # Only let them do this if they're authenticated
             if IS_AUTHENTICATED:
                 print('change time request')
                 new_time = request.decode().split('\r\n')[-1]
@@ -192,9 +202,13 @@ def activateAP():
                 # This line will convert it to this: 08:32
                 new_time = ':'.join(new_time.split('=')[-1].split('%3A'))
                 updateValuesInConfig(time = new_time)
+                # TODO: Change the time on the clock here
                 route = '/main'
 
+        # When they exit the webpage
+        # This will break out of our while loop and hit our outer function to shutdown the AP and run the clock code
         elif route == '/leave':
+            # Only let them do this if they're authenticated
             if IS_AUTHENTICATED:
                 print('in leave')
                 updateValuesInConfig(start_ap = 'False')
@@ -223,6 +237,8 @@ def activateAP():
         gc.collect()
 
 
+
+# Shutdown the AP and do some garbage collection
 def deactivateAP():
     global IS_AUTHENTICATED
     IS_AUTHENTICATED = False
@@ -231,6 +247,7 @@ def deactivateAP():
 
 
 
+# This will run whatever clock code we have (W.I.P.)
 def runClockCode():
     while True:
         # Check for interrupts here so we can break?
@@ -248,24 +265,15 @@ def runClockCode():
 
 
 
-
+# Main loop
 while True:
-    # start_ap = getValuesFromConfig('start_ap')['start_ap']
+    # Start AP until we need to shut it down
     if getValuesFromConfig('start_ap')['start_ap'] == 'True':
         activateAP()
         deactivateAP()
+    # Otherwise run clock code
     else:
         runClockCode()
 
 
 
-
-
-
-
-
-
-
-
-# Start the web server...
-# server.run()
