@@ -70,4 +70,18 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
 <br><br><br>
 
 # Changing the Access Point SSID
-- Fill this out
+- Changing the AP SSID is as simple as changing the line towards the top of `main.py`. However, the tricky part is in getting it propagate
+- The steps below are about the only sure-fire way I've found to get it to work
+  - Make sure the pico isn't currently running (if it is, click the `Stop` footer button to do so)
+  - Click the `All commands` footer button
+  - Click the `MicroPico: Delete all files from board` option
+  - Click the `Reset` footer button
+  - Physically unplug the pico from the computer
+  - Plug the pico back in
+  - Reconnect MicroPico manually or wait a second (it's usually pretty good about reconnecting automatically)
+  - Click the `All commands` footer button
+  - Click the `MicroPico: Upload project to Pico` option
+  - Click the `Reset` footer button
+  - On your wifi-enabled device that you are going to connect, go into your wifi settings and forget the network you previously attached to (this is critical as sometimes it will not show the SSID change on your device)
+  - Click the `Run` footer button
+  - At this point you should see the new SSID being broadcast under the available networks
