@@ -58,17 +58,6 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
 
 <br><br><br>
 
-# Troubleshooting
-### These are some things I've run into and how to fix them
-- Every now and then when you try to run `main.py` and the AP attempts to start up you might see this error: `OSError: [Errno 98] EADDRINUSE`. Follow these steps to mitigate it
-  - If running, click the `Stop` footer button
-  - Click the `Reset` footer button to perform a soft reset of the pico
-  - Click the `Run` footer button again
-  - If the above steps do not work, you can also just try click `Run` over and over again. Usually after 3-5 attempts it will work
-- Sometimes when trying to hit the `Run` footer button you will see: `SyntaxError: invalid syntax`. Typically this just means that you have the wrong script focused. Make sure you are on the `main.py` script (or whatever script you're working on)
-
-<br><br><br>
-
 # Changing the Access Point SSID
 - Changing the AP SSID is as simple as changing the line towards the top of `main.py`. However, the tricky part is in getting it propagate
 - The steps below are about the only sure-fire way I've found to get it to work
@@ -85,3 +74,14 @@ From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepie
   - On your wifi-enabled device that you are going to connect, go into your wifi settings and forget the network you previously attached to (this is critical as sometimes it will not show the SSID change on your device)
   - Click the `Run` footer button
   - At this point you should see the new SSID being broadcast under the available networks
+
+<br><br><br>
+
+# Troubleshooting
+### These are some things I've run into and how to fix them
+- Every now and then when you try to run `main.py` and the AP attempts to start up you might see this error: `OSError: [Errno 98] EADDRINUSE`. Follow these steps to mitigate it
+  - If running, click the `Stop` footer button
+  - Click the `Reset` footer button to perform a soft reset of the pico
+  - Click the `Run` footer button again
+  - If the above steps do not work, you can also just try click `Run` over and over again. Usually after 3-5 attempts it will work
+- Sometimes when trying to hit the `Run` footer button you will see: `SyntaxError: invalid syntax`. Typically this just means that you have the wrong script focused. Make sure you are on the `main.py` script (or whatever script you're working on)
