@@ -4,7 +4,7 @@
 
 # Hex Clock
 
-From the mind of inventor Johnathan Wood comes: the *Hex Clock*. A novel timepiece combining two of his favorite things: technology and hexagons. The Hex Clock uses two hexagons to represent sexigesimal, 24-hour time using two 6-bit binary numbers wrapped around hexagons. Let's see a picture that will hopefully make more sense. (And yes, the left-most bit of the hours hex will never be illuminated except during animations)
+From the mind of my good friend and inventor Johnathan Wood comes: the *Hex Clock*. A novel timepiece combining two of his favorite things: technology and hexagons. The Hex Clock uses two hexagons to represent sexigesimal, 24-hour time using two 6-bit binary numbers wrapped around hexagons. Let's see a picture that will hopefully make more sense. (And yes, the left-most bit of the hours hex will never be illuminated except during animations)
 
 <br>
 
