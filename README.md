@@ -45,6 +45,13 @@ From the mind of my good friend and inventor Johnathan Wood comes: the *Hex Cloc
 - Once finished, it's often good to do a soft reset (no idea why, I've just noticed it help sometimes) simply click the `Reset` footer button
 - Make sure that the `main.py` (or whatever `.py` file you are currently testing) is open and focused
 - Click the `Run` footer button
+
+<br>
+
+## Quick and Dirty Testing
+### If you just want to test code in a singular file (and don't really need everything else) you can simply focus the relevant file and hit the `Run` footer button. This is particularly helpful when developing new animations or random bits of code
+
+### NOTE: If you're trying to test a file that imports another file (and you're changing both files regularly), this won't work and you'll have to follow the above instructions where you upload the code to the pico. 
   
 <br><br><br>
 
