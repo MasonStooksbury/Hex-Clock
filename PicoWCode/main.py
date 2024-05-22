@@ -205,6 +205,7 @@ def activateAP():
                 # This line will convert it to this: 08:32
                 new_time = ':'.join(new_time.split('=')[-1].split('%3A'))
                 updateValuesInConfig(time = new_time)
+                updateDatetime()
                 # TODO: Change the time on the clock here
                 route = '/main'
 
@@ -213,8 +214,10 @@ def activateAP():
             # Only let them do this if they're authenticated
             if IS_AUTHENTICATED:
                 print('change date request')
-                print(request.decode().split('\r\n')[-1])
-                # updateValuesInConfig(date = new_time)
+                new_date = request.decode().split('\r\n')[-1]
+                new_date = new_date.split('=')[-1]
+                updateValuesInConfig(date = new_date)
+                updateDatetime()
                 route = '/main'
 
         # When they exit the webpage
@@ -259,6 +262,51 @@ def deactivateAP():
 
 
 
+# Return the numeric day of the week by calculating it
+def getDowFromDate(date):
+    month_keys = (1,4,4,0,2,5,0,3,6,1,4,6)
+    days_of_week = ("Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+    [yyyy, mm, dd] = [int(i) for i in date.split('T')[0].split('-')]
+    leap_year_modifier = 0
+    if ((yyyy % 400 == 0) or (yyyy % 100 != 0) and (yyyy % 4 == 0)) and mm in (1, 2):
+        leap_year_modifier = -1
+    a = yyyy % 100
+    b = a // 4
+    year_modifier = 0
+    if yyyy < 1800:
+        year_modifier = 4
+    elif 1799 < yyyy < 1900:
+        year_modifier = 2
+    elif 1999 < yyyy < 2100:
+        year_modifier = -1
+    day = (a + b + dd + month_keys[mm-1] + leap_year_modifier + year_modifier) % 7
+
+    reorganized_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    current_day = days_of_week[day]
+
+    count = 0
+    for day in reorganized_days:
+        if current_day == day:
+            break
+        count += 1
+    return count
+
+
+
+# Update the RTC datetime by pulling values from the config file 
+def updateDatetime():
+    values = getValuesFromConfig('date', 'time')
+    date_pieces = [int(x) for x in values['date'].split('-')]
+    time_pieces = [int(x) for x in values['time'].split(':')]
+
+    day_of_week = getDowFromDate(f"{values['date']}T{time_pieces[0]}:{time_pieces[1]}:00")
+
+    rtc.datetime((date_pieces[0], date_pieces[1], date_pieces[2], day_of_week, time_pieces[0], time_pieces[1], 0, 0))
+
+    print('RTC datetime has been updated')
+
+
+
 # This will run whatever clock code we have (W.I.P.)
 def runClockCode():
     while True:
@@ -275,7 +323,7 @@ def runClockCode():
 
 
 
-
+# Initialize the RTC and make an accessor
 rtc = machine.RTC()
 
 
@@ -287,6 +335,7 @@ while True:
         # deactivateAP()
     # Otherwise run clock code
     else:
+        print('run clock code')
         runClockCode()
 
 

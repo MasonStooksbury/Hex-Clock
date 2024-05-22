@@ -55,12 +55,70 @@ def clear():
 
 
 
-# hours, minutes = timeToBinary('14:59')
+def animation1():
+    inner = [17, 14, 11, 8, 5, 2, 17, 14, 11, 8, 5, 2]
+    outer = [1, 3, 4, 6, 7, 9, 10, 12, 13, 15, 16, 0]
 
-# clear()
+    head = 0
+    tail = 1
 
-# binaryToClock(minutes, (255,0,0,0), (0,0,0,0))
-# pcb.write()
-# sleep(3)
+    while True:
 
-# clear()
+        setLed(inner[head], (255, 0, 0, 0))
+        setLed(inner[tail], BLANK)
+
+        setLed(outer[head], (0,0,255,0))
+        setLed(outer[tail], BLANK)
+
+        head += 1
+        tail += 1
+
+        head = 0 if head > len(inner) - 1 else head
+        tail = 0 if tail > len(inner) - 1 else tail
+
+        pcb.write()
+        sleep(0.3)
+
+
+def animation2():
+    lines = [(16, 17, 8, 7), (15, 17, 8, 6), (13, 14, 5, 4), (12, 14, 5, 3), (10, 11, 2, 1), (9, 11, 2, 0)] 
+
+    while True:
+        for line in lines:
+            clear()
+            for pixel in line:
+                setLed(pixel, (0, 255, 0, 0))
+            pcb.write()
+            sleep(0.1)
+
+def animation3():
+    pixels = [0,1,2,5,3,4,6,8,7,9,11,10,12,14,13,15,17,16]
+    head = 0
+    tail = 5
+
+    while True:
+        setLed(pixels[head], (128, 128, 0, 0))
+        setLed(pixels[tail], BLANK)
+
+        head += 1
+        tail += 1
+
+        head = 0 if head > len(pixels) - 1 else head
+        tail = 0 if tail > len(pixels) - 1 else tail
+
+        pcb.write()
+        sleep(0.2)
+
+
+if __name__ == '__main__':
+    # hours, minutes = timeToBinary('14:59')
+
+    clear()
+
+    # animation1a()
+
+    # binaryToClock(minutes, (255,0,0,0), (0,0,0,0))
+    # pcb.write()
+    # sleep(3)
+
+    clear()
