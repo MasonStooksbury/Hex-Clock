@@ -8,7 +8,7 @@ From the mind of my good friend and inventor Johnathan Wood comes: the *Hex Cloc
 
 <br>
 
-![Visual description of how the clock works](https://github.com/MasonStooksbury/Hex-Clock/blob/main/Pictures/clock-explanation.png?raw=true)
+![Visual description of how the clock works](https://github.com/MasonStooksbury/Hex-Clock/blob/main/pictures/clock-explanation.png?raw=true)
 
 <br><br><br>
 
@@ -24,12 +24,12 @@ From the mind of my good friend and inventor Johnathan Wood comes: the *Hex Cloc
 # Developer Setup
 - Open just the `PicoWCode` folder in VSCode; it should look something like this:
   - This is really important for a later step. Doing this wrong could have weird effects or just not work
-  - ![How the file explorer should look in VSCode](https://github.com/MasonStooksbury/Hex-Clock/blob/main/Pictures/folder.png?raw=true)
+  - ![How the file explorer should look in VSCode](https://github.com/MasonStooksbury/Hex-Clock/blob/main/pictures/folder.png?raw=true)
 - Plug in your PicoW (`pico` from now on)
 - Under the `View` tab, click on `Command Palette...` or do `Ctrl + Shift + P` if that shortcut is enabled
 - Click `MicroPico: Connect` to attempt a connection to the pico
 - Once connected, you will see options appear in the footer bar of VSCode (you'll use these mostly):
-  - ![What the footer options look like](https://github.com/MasonStooksbury/Hex-Clock/blob/main/Pictures/footer-options.png?raw=true)
+  - ![What the footer options look like](https://github.com/MasonStooksbury/Hex-Clock/blob/main/pictures/footer-options.png?raw=true)
 - If all is good, you should see that checkmark with "Pico Connected" next to it
   - If this doesn't work, try replugging it, getting a different cable, or trying a different USB port
 - Finally, open up the `test.py` file and make sure that you are on that tab (when we hit the `Run` footer button, MicroPico will attempt to run whatever tab we currently have focused)
