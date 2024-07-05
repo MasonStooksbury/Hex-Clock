@@ -85,7 +85,7 @@
 	(net 3 "Net-(J1-Pin_1)")
 	(net 4 "Net-(J2-Pin_1)")
 	(net 5 "Net-(J2-Pin_2)")
-	(net 6 "unconnected-(U1-GPIO15-Pad20)")
+	(net 6 "Net-(U1-GPIO15)")
 	(net 7 "unconnected-(U1-GND-Pad42)")
 	(net 8 "unconnected-(U1-3V3_EN-Pad37)")
 	(net 9 "unconnected-(U1-GPIO27_ADC1-Pad32)")
@@ -108,7 +108,7 @@
 	(net 26 "unconnected-(U1-GND-Pad3)")
 	(net 27 "unconnected-(U1-GPIO27_ADC1-Pad32)_0")
 	(net 28 "unconnected-(U1-GPIO2-Pad4)_0")
-	(net 29 "unconnected-(U1-GPIO15-Pad20)_0")
+	(net 29 "Net-(SW1-Pad2)")
 	(net 30 "unconnected-(U1-GPIO9-Pad12)")
 	(net 31 "unconnected-(U1-3V3-Pad36)")
 	(net 32 "unconnected-(U1-GPIO20-Pad26)")
@@ -157,7 +157,6 @@
 	(net 75 "unconnected-(J1-Pin_3-Pad3)")
 	(net 76 "Net-(J1-Pin_2)")
 	(net 77 "unconnected-(U1-GPIO10-Pad14)")
-	(net 78 "unconnected-(U1-GND-Pad18)")
 	(footprint "RaspberryPI PicoW:RPi_PicoW_SMD_TH"
 		(layer "F.Cu")
 		(uuid "1d3035d9-9ec1-474b-9881-83fa07ba4745")
@@ -1762,7 +1761,7 @@
 			(drill 1.02)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 78 "unconnected-(U1-GND-Pad18)")
+			(net 29 "Net-(SW1-Pad2)")
 			(pinfunction "GND")
 			(pintype "power_in")
 			(uuid "eef29910-3259-4a6a-97ff-2d0a6cff1f2b")
@@ -1774,7 +1773,7 @@
 				(offset -0.9 0)
 			)
 			(layers "F.Cu" "F.Mask")
-			(net 78 "unconnected-(U1-GND-Pad18)")
+			(net 29 "Net-(SW1-Pad2)")
 			(pinfunction "GND")
 			(pintype "power_in")
 			(uuid "4a8b2cc5-0661-46bc-b806-b8b8ffa6b936")
@@ -1808,9 +1807,9 @@
 			(drill 1.02)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net 6 "unconnected-(U1-GPIO15-Pad20)")
+			(net 6 "Net-(U1-GPIO15)")
 			(pinfunction "GPIO15")
-			(pintype "bidirectional+no_connect")
+			(pintype "bidirectional")
 			(uuid "013f93b1-37e1-40cd-b679-48a4e673bd25")
 		)
 		(pad "20" smd rect
@@ -1820,9 +1819,9 @@
 				(offset -0.9 0)
 			)
 			(layers "F.Cu" "F.Mask")
-			(net 29 "unconnected-(U1-GPIO15-Pad20)_0")
+			(net 6 "Net-(U1-GPIO15)")
 			(pinfunction "GPIO15")
-			(pintype "bidirectional+no_connect")
+			(pintype "bidirectional")
 			(uuid "48cc928f-38a2-4ced-ab1d-44447c2b85a5")
 		)
 		(pad "21" thru_hole oval
@@ -2325,7 +2324,7 @@
 		(at 168 91.75 -90)
 		(descr "JST EH series connector, S4B-EH (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH horizontal")
-		(property "Reference" "Minutes Hex"
+		(property "Reference" "J1"
 			(at 3.75 -7.9 90)
 			(layer "F.SilkS")
 			(uuid "13f14ccc-77ff-4b9a-adef-40c826a3e1b2")
@@ -3046,7 +3045,7 @@
 		(at 168 109 -90)
 		(descr "JST EH series connector, S4B-EH (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH horizontal")
-		(property "Reference" "Hours Hex"
+		(property "Reference" "J2"
 			(at 3.75 -7.9 90)
 			(layer "F.SilkS")
 			(uuid "4350a765-dc77-4f97-9e10-d0e2b86f7e4e")
@@ -3761,6 +3760,134 @@
 			)
 		)
 	)
+	(footprint "RaspberryPI PicoW:Switch"
+		(layer "F.Cu")
+		(uuid "f2ae4509-3815-40cd-9f52-af3fb40c24ac")
+		(at 146.5 124.5)
+		(property "Reference" "SW1"
+			(at 0 -0.5 0)
+			(unlocked yes)
+			(layer "F.SilkS")
+			(uuid "db0cca49-5f21-4acc-a3a0-b109fb173191")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.1)
+				)
+			)
+		)
+		(property "Value" "SW_Push"
+			(at 0 1 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "ad6f2147-9cf6-4601-8578-5355c00f9a82")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Footprint" "RaspberryPI PicoW:Switch"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "29e7012f-3493-447d-a181-5105a30a2eef")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ec077443-2b53-42e3-80b8-c2892da72098")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Description" "Push button switch, generic, two pins"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "d69ec6b6-5751-41e6-bc2c-9eb136321620")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/2d5b91d9-dbad-4891-a0a2-f060f3eebed5")
+		(sheetname "Root")
+		(sheetfile "main-board.kicad_sch")
+		(attr smd)
+		(fp_text user "${REFERENCE}"
+			(at 0 2.5 0)
+			(unlocked yes)
+			(layer "F.Fab")
+			(uuid "bf76b932-d247-4d2b-aae8-d736de6817eb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -3 -6.7)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Paste" "F.Mask")
+			(roundrect_rratio 0.25)
+			(net 6 "Net-(U1-GPIO15)")
+			(pinfunction "1")
+			(pintype "passive")
+			(thermal_bridge_angle 45)
+			(uuid "f9a52a35-422d-4680-91ec-573550e4df16")
+		)
+		(pad "1" smd roundrect
+			(at 3 -6.7)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Paste" "F.Mask")
+			(roundrect_rratio 0.25)
+			(net 6 "Net-(U1-GPIO15)")
+			(pinfunction "1")
+			(pintype "passive")
+			(thermal_bridge_angle 45)
+			(uuid "c6904c39-66e1-4789-a16a-1953f58b4a53")
+		)
+		(pad "2" smd roundrect
+			(at -3 -3)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Paste" "F.Mask")
+			(roundrect_rratio 0.25)
+			(net 29 "Net-(SW1-Pad2)")
+			(pinfunction "2")
+			(pintype "passive")
+			(thermal_bridge_angle 45)
+			(uuid "b4c8bcf9-fa9f-4502-b546-ca6a1b4616b2")
+		)
+		(pad "2" smd roundrect
+			(at 3 -3)
+			(size 1.5 1)
+			(layers "F.Cu" "F.Paste" "F.Mask")
+			(roundrect_rratio 0.25)
+			(net 29 "Net-(SW1-Pad2)")
+			(pinfunction "2")
+			(pintype "passive")
+			(thermal_bridge_angle 45)
+			(uuid "43c5812c-6f92-45e1-bb36-4e8536b4c6f8")
+		)
+	)
 	(gr_line
 		(start 130 63.75)
 		(end 166.25 63.75)
@@ -3772,8 +3899,8 @@
 		(uuid "0834ea58-b8c5-4a0e-88c6-d5d84417d845")
 	)
 	(gr_line
-		(start 178.75 121)
-		(end 130 121)
+		(start 178.75 123)
+		(end 130 123)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -3793,7 +3920,7 @@
 	)
 	(gr_line
 		(start 178.75 86)
-		(end 178.75 121)
+		(end 178.75 123)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -3802,8 +3929,8 @@
 		(uuid "583b8419-212d-4297-9cba-82e43bc5da4e")
 	)
 	(gr_circle
-		(center 133 118.25)
-		(end 135 118.25)
+		(center 133.5 119.5)
+		(end 135.5 119.5)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -3834,8 +3961,8 @@
 		(uuid "966e73e1-7887-41e8-a087-35f59b4a87f0")
 	)
 	(gr_line
-		(start 130 121)
-		(end 130 63.75)
+		(start 130 123)
+		(end 130 65.75)
 		(stroke
 			(width 0.05)
 			(type default)
