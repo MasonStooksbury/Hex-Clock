@@ -3763,11 +3763,12 @@
 	(footprint "RaspberryPI PicoW:Switch"
 		(layer "F.Cu")
 		(uuid "f2ae4509-3815-40cd-9f52-af3fb40c24ac")
-		(at 146.5 124.5)
+		(at 146.5 115.025 180)
 		(property "Reference" "SW1"
-			(at 0 -0.5 0)
+			(at 0 -0.5 180)
 			(unlocked yes)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "db0cca49-5f21-4acc-a3a0-b109fb173191")
 			(effects
 				(font
@@ -3777,9 +3778,10 @@
 			)
 		)
 		(property "Value" "SW_Push"
-			(at 0 1 0)
+			(at 0 1 180)
 			(unlocked yes)
 			(layer "F.Fab")
+			(hide yes)
 			(uuid "ad6f2147-9cf6-4601-8578-5355c00f9a82")
 			(effects
 				(font
@@ -3789,7 +3791,7 @@
 			)
 		)
 		(property "Footprint" "RaspberryPI PicoW:Switch"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -3802,7 +3804,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -3815,7 +3817,7 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
-			(at 0 0 0)
+			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
@@ -3831,20 +3833,8 @@
 		(sheetname "Root")
 		(sheetfile "main-board.kicad_sch")
 		(attr smd)
-		(fp_text user "${REFERENCE}"
-			(at 0 2.5 0)
-			(unlocked yes)
-			(layer "F.Fab")
-			(uuid "bf76b932-d247-4d2b-aae8-d736de6817eb")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
 		(pad "1" smd roundrect
-			(at -3 -6.7)
+			(at -3 -6.7 180)
 			(size 1.5 1)
 			(layers "F.Cu" "F.Paste" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3855,7 +3845,7 @@
 			(uuid "f9a52a35-422d-4680-91ec-573550e4df16")
 		)
 		(pad "1" smd roundrect
-			(at 3 -6.7)
+			(at 3 -6.7 180)
 			(size 1.5 1)
 			(layers "F.Cu" "F.Paste" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3866,7 +3856,7 @@
 			(uuid "c6904c39-66e1-4789-a16a-1953f58b4a53")
 		)
 		(pad "2" smd roundrect
-			(at -3 -3)
+			(at -3 -3 180)
 			(size 1.5 1)
 			(layers "F.Cu" "F.Paste" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3877,7 +3867,7 @@
 			(uuid "b4c8bcf9-fa9f-4502-b546-ca6a1b4616b2")
 		)
 		(pad "2" smd roundrect
-			(at 3 -3)
+			(at 3 -3 180)
 			(size 1.5 1)
 			(layers "F.Cu" "F.Paste" "F.Mask")
 			(roundrect_rratio 0.25)
@@ -3962,7 +3952,7 @@
 	)
 	(gr_line
 		(start 130 123)
-		(end 130 65.75)
+		(end 130 63.75)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -4102,6 +4092,70 @@
 		(layer "F.Cu")
 		(net 5)
 		(uuid "d531b6e2-0837-4d91-a119-52d18345aac0")
+	)
+	(segment
+		(start 149.5 121.725)
+		(end 143.5 121.725)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 6)
+		(uuid "1ffa8d51-3d68-46be-a13f-93fa1b2e9ede")
+	)
+	(segment
+		(start 137.86 116.085)
+		(end 137.86 114)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 6)
+		(uuid "bfc5a706-83e8-4ea3-af26-19671a5711fc")
+	)
+	(segment
+		(start 143.5 121.725)
+		(end 137.86 116.085)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 6)
+		(uuid "f5a49939-38f0-4e90-af7e-51a20ae5d209")
+	)
+	(segment
+		(start 143.5 118.025)
+		(end 141 115.525)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 29)
+		(uuid "15f7717f-44fc-4c32-a1e0-dcd6d1899f28")
+	)
+	(segment
+		(start 141 112)
+		(end 137.92 108.92)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 29)
+		(uuid "39f02110-27c6-4612-9380-42be04384ebd")
+	)
+	(segment
+		(start 143.5 118.025)
+		(end 149.5 118.025)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 29)
+		(uuid "4880463d-38f0-4ee8-bda5-6decc6f62e18")
+	)
+	(segment
+		(start 141 115.525)
+		(end 141 112)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 29)
+		(uuid "cad1c280-6681-4e7e-9453-3aaf4ca51e54")
+	)
+	(segment
+		(start 137.92 108.92)
+		(end 137.86 108.92)
+		(width 0.2)
+		(layer "F.Cu")
+		(net 29)
+		(uuid "d33a8a6e-73b8-436f-b1e6-df7c03692ef4")
 	)
 	(segment
 		(start 168 94.25)
