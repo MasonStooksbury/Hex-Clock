@@ -166,6 +166,7 @@
 		(property "Reference" "U1"
 			(at 0 0 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "a1baa990-7a8a-4eba-bdeb-95b960d1b0f2")
 			(effects
 				(font
@@ -2324,8 +2325,8 @@
 		(at 168 91.75 -90)
 		(descr "JST EH series connector, S4B-EH (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH horizontal")
-		(property "Reference" "J1"
-			(at 3.75 -7.9 90)
+		(property "Reference" "Minutes Hex"
+			(at 3.75 -8.5 90)
 			(layer "F.SilkS")
 			(uuid "13f14ccc-77ff-4b9a-adef-40c826a3e1b2")
 			(effects
@@ -3045,8 +3046,8 @@
 		(at 168 109 -90)
 		(descr "JST EH series connector, S4B-EH (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH horizontal")
-		(property "Reference" "J2"
-			(at 3.75 -7.9 90)
+		(property "Reference" "Hours Hex"
+			(at 3.75 -8.5 90)
 			(layer "F.SilkS")
 			(uuid "4350a765-dc77-4f97-9e10-d0e2b86f7e4e")
 			(effects
@@ -3997,14 +3998,6 @@
 		(uuid "3892b012-5405-46eb-9d07-bd02ee30849f")
 	)
 	(via
-		(at 157.5 65.75)
-		(size 0.6)
-		(drill 0.3)
-		(layers "F.Cu" "B.Cu")
-		(net 2)
-		(uuid "6e474666-0096-4ef0-9f87-27d43215f56d")
-	)
-	(via
 		(at 164 116.5)
 		(size 0.6)
 		(drill 0.3)
@@ -4014,20 +4007,20 @@
 		(uuid "ba105175-874d-463e-8ea4-32302a616b59")
 	)
 	(segment
-		(start 164 72.25)
-		(end 157.5 65.75)
-		(width 0.2)
-		(layer "B.Cu")
-		(net 2)
-		(uuid "783c1967-942c-46e8-9e86-1aeb852671bc")
-	)
-	(segment
-		(start 164 99.25)
+		(start 157.49 65.74)
 		(end 164 72.25)
 		(width 0.2)
 		(layer "B.Cu")
 		(net 2)
-		(uuid "acff9025-8a86-4c75-ae32-8b0dfd0f6a2b")
+		(uuid "39ee4194-2c4a-4273-ab8b-4bce49a2dedf")
+	)
+	(segment
+		(start 155.64 65.74)
+		(end 157.49 65.74)
+		(width 0.2)
+		(layer "B.Cu")
+		(net 2)
+		(uuid "9741bf34-c9b0-43b7-a992-6b3115d38c81")
 	)
 	(segment
 		(start 164 116.5)
@@ -4036,6 +4029,14 @@
 		(layer "B.Cu")
 		(net 2)
 		(uuid "b6292ea6-c9b4-4f76-8357-bc963c228f0e")
+	)
+	(segment
+		(start 164 72.25)
+		(end 164 99.25)
+		(width 0.2)
+		(layer "B.Cu")
+		(net 2)
+		(uuid "e2ccb57b-113b-4e93-8053-fa50def28281")
 	)
 	(segment
 		(start 168 91.75)
