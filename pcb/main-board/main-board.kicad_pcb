@@ -2326,7 +2326,7 @@
 		(at 168.7175 76 -90)
 		(descr "JST EH series connector, S4B-EH (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH horizontal")
-		(property "Reference" "J1"
+		(property "Reference" "Minutes Hex"
 			(at 3.75 -8.5 90)
 			(layer "F.SilkS")
 			(uuid "13f14ccc-77ff-4b9a-adef-40c826a3e1b2")
@@ -3047,7 +3047,7 @@
 		(at 168.7175 93.25 -90)
 		(descr "JST EH series connector, S4B-EH (http://www.jst-mfg.com/product/pdf/eng/eEH.pdf), generated with kicad-footprint-generator")
 		(tags "connector JST EH horizontal")
-		(property "Reference" "J2"
+		(property "Reference" "Hours Hex"
 			(at 3.75 -8.5 90)
 			(layer "F.SilkS")
 			(uuid "4350a765-dc77-4f97-9e10-d0e2b86f7e4e")
@@ -4222,7 +4222,7 @@
 	)
 	(gr_line
 		(start 130 63.75)
-		(end 166.25 63.75)
+		(end 168 63.75)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -4241,7 +4241,7 @@
 		(uuid "114e33df-4de0-40e8-8a4b-e9d99b00eaa7")
 	)
 	(gr_line
-		(start 166.25 71)
+		(start 168 71)
 		(end 178.75 71)
 		(stroke
 			(width 0.05)
@@ -4272,8 +4272,8 @@
 		(uuid "61d672cc-f362-45d8-88f2-f662a12b2296")
 	)
 	(gr_circle
-		(center 163.5 66.5)
-		(end 165.5 66.5)
+		(center 164.8 66.8)
+		(end 166.8 66.8)
 		(stroke
 			(width 0.05)
 			(type default)
@@ -4283,8 +4283,8 @@
 		(uuid "856bef7c-dd4b-4014-a6f2-204dc069108f")
 	)
 	(gr_line
-		(start 166.25 63.75)
-		(end 166.25 71)
+		(start 168 63.75)
+		(end 168 71)
 		(stroke
 			(width 0.05)
 			(type default)
