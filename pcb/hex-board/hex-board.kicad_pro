@@ -452,7 +452,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "Hex-Clock.kicad_pro",
+    "filename": "hex-board.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -490,7 +490,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../../../../Desktop/Hex-Clock.step",
+      "step": "hex-board.step",
       "svg": "",
       "vrml": ""
     },
