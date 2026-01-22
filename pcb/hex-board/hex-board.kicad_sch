@@ -1,13 +1,15 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "edf9ce91-2996-4eb8-998d-41a561111f6e")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Connector:Conn_01x04_Socket"
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -81,45 +83,9 @@
 				)
 			)
 			(symbol "Conn_01x04_Socket_1_1"
-				(arc
-					(start 0 -4.572)
-					(mid -0.5058 -5.08)
-					(end 0 -5.588)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 -2.032)
-					(mid -0.5058 -2.54)
-					(end 0 -3.048)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
 				(polyline
 					(pts
-						(xy -1.27 -5.08) (xy -0.508 -5.08)
-					)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -2.54) (xy -0.508 -2.54)
+						(xy -1.27 2.54) (xy -0.508 2.54)
 					)
 					(stroke
 						(width 0.1524)
@@ -143,7 +109,19 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 2.54) (xy -0.508 2.54)
+						(xy -1.27 -2.54) (xy -0.508 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -5.08) (xy -0.508 -5.08)
 					)
 					(stroke
 						(width 0.1524)
@@ -154,21 +132,45 @@
 					)
 				)
 				(arc
-					(start 0 0.508)
-					(mid -0.5058 0)
-					(end 0 -0.508)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 3.048)
+					(start 0 2.032)
 					(mid -0.5058 2.54)
-					(end 0 2.032)
+					(end 0 3.048)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -0.508)
+					(mid -0.5058 0)
+					(end 0 0.508)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -3.048)
+					(mid -0.5058 -2.54)
+					(end 0 -2.032)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -5.588)
+					(mid -0.5058 -5.08)
+					(end 0 -4.572)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -250,6 +252,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Custom:LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder"
 			(exclude_from_sim no)
@@ -348,24 +351,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -384,7 +369,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_1"
 			(exclude_from_sim no)
@@ -483,24 +487,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -519,7 +505,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_10"
 			(exclude_from_sim no)
@@ -618,24 +623,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -654,7 +641,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_12"
 			(exclude_from_sim no)
@@ -753,24 +759,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -789,7 +777,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_13"
 			(exclude_from_sim no)
@@ -888,24 +895,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -924,7 +913,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_14"
 			(exclude_from_sim no)
@@ -1023,24 +1031,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1059,7 +1049,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_15"
 			(exclude_from_sim no)
@@ -1158,24 +1167,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1194,7 +1185,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_16"
 			(exclude_from_sim no)
@@ -1293,24 +1303,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1329,7 +1321,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_17"
 			(exclude_from_sim no)
@@ -1428,24 +1439,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1464,7 +1457,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_18"
 			(exclude_from_sim no)
@@ -1563,24 +1575,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1599,7 +1593,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_19"
 			(exclude_from_sim no)
@@ -1698,24 +1711,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1734,7 +1729,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_20"
 			(exclude_from_sim no)
@@ -1833,24 +1847,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -1869,7 +1865,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_21"
 			(exclude_from_sim no)
@@ -1968,24 +1983,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -2004,7 +2001,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_22"
 			(exclude_from_sim no)
@@ -2103,24 +2119,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -2139,7 +2137,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_23"
 			(exclude_from_sim no)
@@ -2238,24 +2255,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -2274,7 +2273,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_3"
 			(exclude_from_sim no)
@@ -2373,24 +2391,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -2409,7 +2409,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "LED_SK6812RGBW_5050Metric_Pad1.5x1.5mm_HandSolder_7"
 			(exclude_from_sim no)
@@ -2508,24 +2527,6 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 7.62 6.35 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 0.8 0.8)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at 7.62 10.16 180)
 					(length 2.54)
@@ -2544,7 +2545,26 @@
 						)
 					)
 				)
+				(pin bidirectional line
+					(at 7.62 6.35 180)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 0.8 0.8)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+5V"
 			(power)
@@ -2622,7 +2642,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -2634,7 +2654,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -2648,7 +2668,8 @@
 			(symbol "+5V_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "+5V"
 						(effects
 							(font
@@ -2665,6 +2686,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
@@ -2744,7 +2766,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -2761,6 +2784,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 	)
 	(junction
@@ -6006,4 +6030,5 @@
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )
